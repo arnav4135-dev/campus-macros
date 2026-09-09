@@ -1,0 +1,21 @@
+# fly launch --no-deploy && fly volumes create data --size 1 && fly secrets set JWT_SECRET=... ANTHROPIC_API_KEY=... && fly deploy
+app = "macro-tracker-api"
+primary_region = "dfw"
+
+[build]
+
+[env]
+  PORT = "4000"
+  DATA_DIR = "/data"
+  TZ = "America/Chicago"
+
+[mounts]
+  source = "data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 4000
+  force_https = true
+  auto_stop_machines = false   # scheduler must keep running
+  auto_start_machines = true
+  min_machines_running = 1
