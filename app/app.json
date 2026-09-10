@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "TAMU Macros",
+    "slug": "tamu-macro-tracker",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "scheme": "tamumacros",
+    "splash": { "backgroundColor": "#500000" },
+    "ios": { "supportsTablet": false, "bundleIdentifier": "com.raghuvanshi.tamumacros",
+      "infoPlist": { "NSCameraUsageDescription": "Take a photo of your meal to estimate its macros.",
+                     "NSPhotoLibraryUsageDescription": "Pick a photo of your meal to estimate its macros." } },
+    "android": { "package": "com.raghuvanshi.tamumacros", "permissions": ["CAMERA"] },
+    "plugins": ["expo-secure-store", ["expo-image-picker", { "cameraPermission": "Take a photo of your meal to estimate its macros." }]],
+    "extra": { "apiUrl": "http://192.168.1.10:4000" }
+  }
+}
