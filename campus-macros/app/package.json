@@ -1,27 +1,20 @@
 {
-  "name": "@tmt/app",
-  "version": "0.1.0",
+  "name": "campus-macros",
   "private": true,
-  "main": "expo/AppEntry.js",
+  "workspaces": [
+    "server",
+    "web"
+  ],
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios"
+    "server": "npm run dev --workspace=server",
+    "web": "npm run dev --workspace=web",
+    "app": "npm run start --workspace=app",
+    "scrape": "npm run scrape --workspace=server",
+    "build": "npm run build --workspace=web"
   },
-  "dependencies": {
-    "@react-navigation/bottom-tabs": "^6.6.1",
-    "@react-navigation/native": "^6.1.18",
-    "@react-navigation/native-stack": "^6.11.0",
-    "expo": "~52.0.0",
-    "expo-image-picker": "~16.0.0",
-    "expo-secure-store": "~14.0.0",
-    "expo-status-bar": "~2.0.0",
-    "react": "18.3.1",
-    "react-native": "0.76.5",
-    "react-native-safe-area-context": "4.12.0",
-    "react-native-screens": "~4.4.0"
+  "engines": {
+    "node": "22.x"
   },
-  "devDependencies": {
-    "@babel/core": "^7.25.0"
-  }
+  "dependencies": {},
+  "type": "module"
 }
