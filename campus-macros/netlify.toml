@@ -1,0 +1,24 @@
+# One Netlify site hosts everything: the website (web/dist) and the API (netlify/functions).
+# Database is Turso (free hosted SQLite). No servers anywhere.
+[build]
+  command = "npm run build --workspace=web"
+  publish = "web/dist"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["@libsql/client", "libsql"]
+
+# The scheduled scraper: every 10 minutes, scrape a few stale locations per campus within the function time limit.
+[functions."scrape"]
+  schedule = "*/10 * * * *"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
